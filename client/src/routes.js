@@ -14,39 +14,42 @@ import OrderPage from "./pages/OrderPage";
 export const useRoutes = isAuthenticated => {
     const storageName = 'userData'
     const data = JSON.parse(localStorage.getItem(storageName))
-    if (data.token || isAuthenticated) {
-        return(
-            <Switch>
-                <Route path="/modelPage" exact>
-                    <ModelPage />
-                </Route>
-                <Route path="/markPage" exact>
-                    <MarkPage />
-                </Route>
-                <Route path="/clientPage" exact>
-                    <ClientPage />
-                </Route>
-                <Route path="/classPage" exact>
-                    <ClassPage />
-                </Route>
-                <Route path="/typePage" exact>
-                    <TypePage />
-                </Route>
-                <Route path="/autoPage" exact>
-                    <AutoPage />
-                </Route>
-                <Route path="/parkPage" exact>
-                    <ParkPage />
-                </Route>
-                <Route path="/accidentPage" exact>
-                    <AccidentPage />
-                </Route>
-                <Route path="/orderPage" exact>
-                    <OrderPage />
-                </Route>
-                <Redirect to="/markPage" />
-            </Switch>
-        )
+    if(data.token !== null)
+    {
+        if (data.token || isAuthenticated) {
+            return(
+                <Switch>
+                    <Route path="/modelPage" exact>
+                        <ModelPage />
+                    </Route>
+                    <Route path="/markPage" exact>
+                        <MarkPage />
+                    </Route>
+                    <Route path="/clientPage" exact>
+                        <ClientPage />
+                    </Route>
+                    <Route path="/classPage" exact>
+                        <ClassPage />
+                    </Route>
+                    <Route path="/typePage" exact>
+                        <TypePage />
+                    </Route>
+                    <Route path="/autoPage" exact>
+                        <AutoPage />
+                    </Route>
+                    <Route path="/parkPage" exact>
+                        <ParkPage />
+                    </Route>
+                    <Route path="/accidentPage" exact>
+                        <AccidentPage />
+                    </Route>
+                    <Route path="/orderPage" exact>
+                        <OrderPage />
+                    </Route>
+                    <Redirect to="/markPage" />
+                </Switch>
+            )
+        }
     }
 
     return (

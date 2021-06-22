@@ -14,18 +14,21 @@ function App() {
     const data = JSON.parse(localStorage.getItem(storageName))
     const isAuthenticated = !!token
     const routes = useRoutes(isAuthenticated)
-    if (data.token || isAuthenticated) {
-        return (
-            <AuthContext.Provider value={{
-                token, login, logout,userId, isAuthenticated
-            }}>
-                <Router>
-                    <div className="container">
-                        {routes}
-                    </div>
-                </Router>
-            </AuthContext.Provider>
-        )
+    if(data.token !== null)
+    {
+        if (data.token || isAuthenticated) {
+            return (
+                <AuthContext.Provider value={{
+                    token, login, logout,userId, isAuthenticated
+                }}>
+                    <Router>
+                        <div className="container">
+                            {routes}
+                        </div>
+                    </Router>
+                </AuthContext.Provider>
+            )
+        }
     }
 
     return (
